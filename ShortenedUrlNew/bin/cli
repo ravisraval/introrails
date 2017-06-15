@@ -6,15 +6,15 @@ puts "Would you like to 1) visit a shortened URL, or 2) create a new one?"
 user_response = gets.chomp.to_i
 
 if user_response == 1 #if visit already made link
-  print "Type the link you'd like to visit:"
+  print "Type the link you'd like to visit: "
   long_url = ShortenedUrl.find_by_short_url(gets.chomp).long_url
   Launchy.open(long_url)
 else #if they want us to shorten a long url
-  print "What URL would you like to shorten:"
+  print "What URL would you like to shorten: "
   long_url = gets.chomp
   x = User.new(email: user_email)
   x.save
   puts
-  print "Your shortened URL is:"
+  print "Your shortened URL is: "
   puts ShortenedUrl.create!(x, long_url).short_url
 end
